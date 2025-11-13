@@ -12,11 +12,11 @@
        <img src="images/home.png">
        <p>Home</p>
     </a>
-    <a href="AttendenceList.html" class="navigation">
+    <a href="AttendanceList.html" class="navigation">
       <img src="images/list.png">
-      <p>Attendence List</p>
+      <p>Attendance List</p>
     </a>
-   <a href="addStudent.html" class="navigation">
+   <a href="addStudent.html" class="navigation" id="current">
     <img src="images/user.png">
     <p>Add Student</p>
    </a>
@@ -29,16 +29,22 @@
   <p>Logout</p>
 </a>
   </nav>
-   <form action="">
+   <form action="" id="studentForm">
     <label for="ID">Student ID :</label>
-    <input id="ID" type="number" placeholder="Enter your ID">
+    <input id="ID" type="text" placeholder="Enter your ID" required>
+    <span class="error" id="idError"></span>
     <label for="LName">Last Name :</label>
-    <input id="LName" type="text" placeholder="Enter your Last Name">
+    <input id="LName" type="text" placeholder="Enter your Last Name" required>
+    <span class="error" id="LNameError"></span>
      <label for="FName">First Name :</label>
-    <input id="FName" type="text" placeholder="Enter your First Name">
-     <label for="LName">Email :</label>
-    <input id="Email" type="email" placeholder="Enter your Email">
+    <input id="FName" type="text" placeholder="Enter your First Name" required>
+    <span class="error" id="FNameError"></span>
+     <label for="Email">Email :</label>
+    <input id="Email" type="email" placeholder="Enter your Email" required
+    >
+    <span class="error" id="emailError"></span>
     <button type="submit" class="submit">submit</button>
   </form>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -53,6 +53,7 @@ body{
   right: 0;
   height: 80px;
   background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   z-index: 2;
 }
 
@@ -81,6 +82,14 @@ body{
   font-weight: 500;
   color: black;
 }
+#current {
+  background-color: #5dade2;
+  transition: background-color 0.3s ease; 
+}
+#current:hover {
+  background-color: #85c1e9; 
+}
+
 .pic{
   display: inline-block;
   height: 400px;
@@ -91,58 +100,6 @@ body{
   height: 100%;
   width: 100%;
 }
-.summary {
-  width: 90%;
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 25px;
-  background: white;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.date-time {
-  font-size: 16px;
-  font-weight: 600;
-  color: #444;
-  margin-bottom: 15px;
-}
-
-.summary-cards {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.summary-item {
-  flex: 1;
-  margin: 10px;
-  padding: 15px;
-  background: #f7f7f7;
-  border-radius: 8px;
-}
-
-.summary-item h3 {
-  margin-bottom: 10px;
-}
-
-.summary button {
-  background: #2980b9;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.summary button:hover {
-  background: #1f5f91;
-}
-
 .shortcuts{
   display: flex;
   flex-direction: row;
@@ -199,9 +156,14 @@ th {
   background-color: #2980b9;
   color: white;
 }
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
+.highlight-green{
+  background-color: rgb(120, 223, 120);
+}
+.highlight-yellow{
+  background-color: rgb(244, 244, 135);
+}
+.highlight-red{
+  background-color: rgb(255, 83, 83);
 }
 form{
   width: 600px;
@@ -220,7 +182,7 @@ form label{
 form input{
   width: 100%;
   height: 40px;
-  padding: 10x;
+  padding: 10px;
   margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -231,6 +193,12 @@ form input:focus {
   border-color: #2980b9;
   outline: none;
   box-shadow: 0 0 5px rgba(41, 128, 185, 0.3);
+}
+.error{
+  color: red;
+  font-size: smaller;
+  font-weight: 100;
+  display: block;
 }
 .submit{
   display: block;

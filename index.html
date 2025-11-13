@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Attendance Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <nav class="nav-bar">
+    <a href="index.html" class="navigation" >
+      <img src="images/home.png">
+        <p>Home</p>
+    </a>
+    <a href="AttendanceList.html" class="navigation">
+      <img src="images/list.png">
+      <p>Attendance List</p>
+    </a>
+    <a href="addStudent.html" class="navigation">
+      <img src="images/user.png">
+      <p>Add Student</p>
+     </a>
+    <a href="reports.html" class="navigation">
+      <img src="images/report.png">
+      <p>Reports</p>
+    </a>
+    <a href="logout.html" class="navigation">
+      <img src="images/out.png">
+      <p>Logout</p>
+    </a>
+  </nav>
+  <div class="scrolling-message">
+    <span>Welcome to Student Attendance System</span>
+  </div>
+  <section class="pic">
+    <img src="images/class.jpg" >
+  </section>
+  <section class="summary">
+  <p id="dateTime" class="date-time"></p>
+
+  <h2>Today's Attendance Summary</h2>
+
+  <div class="summary-cards">
+    <div class="summary-item">
+      <h3>Total Students</h3>
+      <p id="totalStudents">0</p>
+    </div>
+
+    <div class="summary-item">
+      <h3>Present</h3>
+      <p id="presentCount">0</p>
+    </div>
+
+    <div class="summary-item">
+      <h3>Absent</h3>
+      <p id="absentCount">0</p>
+    </div>
+  </div>
+
+  <button onclick="location.href='AttendanceList.html'">Mark Attendance</button>
+</section>
+  <section class="shortcuts">
+    <div class="card">
+      <h2>Click to see the Attendence List </h2>
+      <button onclick="location.href='AttendenceList.html'">Attendence List</button>
+    </div>
+    <div class="card">
+      <h2>Click to add a Student </h2>
+      <button onclick="location.href='addStudent.html'">add student</button>
+    </div>
+    <div class="card">
+      <h2>Click to see the reports </h2>
+      <button onclick="location.href='reports.html'">show reports</button>
+    </div>
+  </section>
+  <script src="script.js"></script>
+ 
+</body>
+</html>

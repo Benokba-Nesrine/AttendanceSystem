@@ -142,3 +142,114 @@ form.addEventListener("submit", function(e){
 
   form.reset();
 });
+// EXERCISE 4 — REPORT GENERATION
+      const reportBtn = document.getElementById("generateReport");
+      const reportText = document.getElementById("reportText");
+      const ctx = document.getElementById("chartCanvas").getContext("2d");
+      let chart;
+
+      reportBtn.addEventListener("click", () => {
+        updateTable();
+        let total = document.querySelector("tbody").rows.length;
+        let lowAbs = 0,
+          midAbs = 0,
+          highAbs = 0;
+        Array.from(tbody.rows).forEach((r) => {
+          const abs = parseInt(r.querySelector(".abs").textContent);
+          if (abs < 3) lowAbs++;
+          else if (abs <= 4) midAbs++;
+          else highAbs++;
+        });
+        const avgAbs = (
+          Array.from(tbody.rows).reduce(
+            (sum, r) => sum + parseInt(r.querySelector(".abs").textContent),
+            0
+          ) / total
+        ).toFixed(2);
+        reportText.innerHTML = `<p><strong>Total Students:</strong> ${total}</p>
+      <p><strong>Average Absences:</strong> ${avgAbs}</p>
+      <p><strong>Green (&lt;3 abs):</strong> ${lowAbs}, <strong>Yellow (3–4):</strong> ${midAbs}, <strong>Red (≥5):</strong> ${highAbs}</p>`;
+
+        const data = {
+          labels: ["<3 abs", "3–4 abs", "≥5 abs"],
+          datasets: [
+            {
+              label: "Absence Distribution",
+              data: [lowAbs, midAbs, highAbs],
+              backgroundColor: ["#9be8a9", "#fff799", "#ff9999"],
+            },
+          ],
+        };
+        if (chart) chart.destroy();
+        chart = new Chart(ctx, {
+          type: "bar",
+          data,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: false },
+              title: { display: true, text: "Attendance Overview" },
+            },
+          },
+        });
+      });
+
+  $(document).ready(function () {
+  
+  // 1. Highlight row on hover
+  $("#attendanceTable tbody tr").hover(
+    function () {
+      $(this).removeClass("highlight-green", "highlight-yellow", "highlight-red");
+      $(this).addClass("row-hover");
+
+    },
+    function () {
+      $(this).removeClass("row-hover");
+      $(this).updateTable()    }
+  );
+
+  // 2. On click: show full name + absences
+  $("#attendanceTable tbody tr ").on("click", " td:nth-child(1), td:nth-child(2), td:nth-child(3),  td:nth-child(16), td:nth-child(17),  td:nth-child(18)", function () {
+    const row = $(this).closest("tr");
+    const last = row.find(" td:nth-child(2)").text();
+    const first = row.find(" td:nth-child(3)").text();
+    const absences = row.find(" .abs").text();
+
+    alert(`Student: ${first} ${last}\nAbsences: ${absences}`);
+  });
+
+});
+$(document).ready(function () {
+
+  // Highlight Excellent Students (Glow effect)
+  $("#highlightExcellentBtn").on("click", function () {
+
+    $("#attendanceTable tbody tr").each(function () {
+      const row = $(this);
+      const abs = parseInt(row.find(".abs").text().trim());
+
+      if (abs < 3) {
+        row.addClass("glow-effect");
+      }
+    });
+  });
+
+  // Reset Colors + remove glow
+  $("#resetColorsBtn").on("click", function () {
+
+    $("#attendanceTable tbody tr").each(function () {
+      const row = $(this);
+
+      // remove glow
+      row.removeClass("glow-effect");
+
+      // restore your standard row colors
+      const domRow = this;
+      if (typeof updateRow === "function") {
+        updateRow(domRow);
+      }
+    });
+  });
+
+});
+

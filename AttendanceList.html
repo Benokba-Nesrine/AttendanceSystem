@@ -123,6 +123,9 @@
       </tr>
     </tbody>
   </table>
+  <button id="highlightExcellentBtn">Highlight Excellent Students</button>
+  <button id="resetColorsBtn">Reset Colors</button>
+
   <form action="" id="studentForm">
     <label for="ID">Student ID :</label>
     <input id="ID" type="text" placeholder="Enter your ID" required>
@@ -139,6 +142,14 @@
     <span class="error" id="emailError"></span>
     <button type="submit" class="submit">submit</button>
   </form>
+  <div id="report">
+      <h2>Attendance Summary Report</h2>
+      <button id="generateReport" class="small">Generate Report</button>
+      <div id="reportText"></div>
+      <canvas id="chartCanvas" height="150"></canvas>
+    </div>
+  <script  src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

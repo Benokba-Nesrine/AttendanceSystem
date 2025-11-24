@@ -200,7 +200,7 @@ form input:focus {
   font-weight: 100;
   display: block;
 }
-.submit{
+button{
   display: block;
   margin-top: 20px;
   width: 100%;
@@ -214,7 +214,36 @@ form input:focus {
   cursor: pointer;
   transition: 0.3s
 }
-.submit:hover {
+button:hover {
   background-color: #1f5f91;
 }
 
+ 
+      #report {
+        background: #fff;
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        margin-top: 24px;
+        max-width: 700px;
+      }
+      #report h2 {
+        margin-top: 0;
+      }
+      canvas {
+        max-width: 100%;
+      }
+.row-hover:hover {
+  background-color: #f0f8ff; /* light blue */
+  transition: 0.2s;
+}
+.glow-effect {
+  box-shadow: 0 0 10px 3px #00ff00;
+  transition: box-shadow 0.4s ease;
+  animation: glowPulse 1.2s infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 8px 2px #00ff00; }
+  100% { box-shadow: 0 0 20px 6px #00ff00; }
+}

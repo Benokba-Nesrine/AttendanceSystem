@@ -60,94 +60,16 @@
         <th >pa</th>
       </tr>
     </thead>
-   <tbody>
-      <tr>
-         <td>0</td>
-         <td>Benokba</td>
-         <td>Nesrine</td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="abs" ></td>
-         <td class="parNbr"></td>
-         <td class="msg"></td>
-      </tr>
-      <tr>
-         <td>1</td>
-         <td>Bahmani</td>
-         <td>Assia</td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="abs" ></td>
-         <td class="parNbr"></td>
-         <td class="msg"></td>
-      </tr>
-      <tr>
-         <td>2</td>
-         <td>Boukhalfa</td>
-         <td>Aridj</td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="presence"><input type="checkbox"></td>
-         <td class="participation"><input type="checkbox"></td>
-         <td class="abs" ></td>
-         <td class="parNbr"></td>
-         <td class="msg"></td>
-      </tr>
+    <tbody id="studentsBody">
+       
+    </tbody>
+
     </tbody>
   </table>
   <button id="highlightExcellentBtn">Highlight Excellent Students</button>
   <button id="resetColorsBtn">Reset Colors</button>
 
-  <form action="" id="studentForm">
-    <label for="ID">Student ID :</label>
-    <input id="ID" type="text" placeholder="Enter your ID" required>
-    <span class="error" id="idError"></span>
-    <label for="LName">Last Name :</label>
-    <input id="LName" type="text" placeholder="Enter your Last Name" required>
-    <span class="error" id="LNameError"></span>
-     <label for="FName">First Name :</label>
-    <input id="FName" type="text" placeholder="Enter your First Name" required>
-    <span class="error" id="FNameError"></span>
-     <label for="Email">Email :</label>
-    <input id="Email" type="email" placeholder="Enter your Email" required
-    >
-    <span class="error" id="emailError"></span>
-    <button type="submit" class="submit">submit</button>
-  </form>
-  <div id="report">
-      <h2>Attendance Summary Report</h2>
-      <button id="generateReport" class="small">Generate Report</button>
-      <div id="reportText"></div>
-      <canvas id="chartCanvas" height="150"></canvas>
-    </div>
+  
   <script  src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>

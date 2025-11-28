@@ -1,18 +1,14 @@
 <?php
-require_once "config.php";
-
-function getConnection() {
-    global $DB_HOST, $DB_USER, $DB_PASS, $DB_NAME;
+// db_connect.php
+function getDatabaseConnection(): PDO
+{
+    $config = require 'config.php';
+    $dsn = "mysql:host={$config['host']};dbname={$config['dbname']};charset={$config['charset']}";
 
     try {
-        $dsn = "mysql:host=$DB_HOST;dbname=$DB_NAME;charset=utf8";
-        $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
-
-        $conn = new PDO($dsn, $DB_USER, $DB_PASS, $options);
-        return $conn;
-
+        return new PDO($dsn, $config['username'], $config['password'], $config['options']);
     } catch (PDOException $e) {
-        error_log(date("Y-m-d H:i:s") . " - DB Error: " . $e->getMessage() . "\n", 3, "db_errors.log");
-        return false;
+        // In production you would log this, not show it
+        die("Database connection failed: " . $e->getMessage());
     }
 }

@@ -1,50 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Student</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="nav-bar">
-    <a href="index.html" class="navigation" >
-       <img src="images/home.png">
-       <p>Home</p>
+
+<nav class="nav-bar">
+    <a href="index.html" class="navigation">
+        <img src="images/home.png">
+        <p>Home</p>
     </a>
     <a href="AttendanceList.html" class="navigation">
-      <img src="images/list.png">
-      <p>Attendance List</p>
+        <img src="images/list.png">
+        <p>Attendance List</p>
     </a>
-   <a href="addStudent.html" class="navigation" id="current">
-    <img src="images/user.png">
-    <p>Add Student</p>
-   </a>
- <a href="reports.html" class="navigation">
-  <img src="images/report.png">
-  <p>Reports</p>
- </a>
-<a href="logout.html" class="navigation">
-  <img src="images/out.png">
-  <p>Logout</p>
-</a>
-  </nav>
-   <form action="" id="studentForm">
+    <a href="addStudent.html" class="navigation" id="current">
+        <img src="images/user.png">
+        <p>Add Student</p>
+    </a>
+    <a href="reports.html" class="navigation">
+        <img src="images/report.png">
+        <p>Reports</p>
+    </a>
+    <a href="logout.html" class="navigation">
+        <img src="images/out.png">
+        <p>Logout</p>
+    </a>
+</nav>
+
+
+<!-- ============================== -->
+<!-- Add Student Form -->
+<!-- ============================== -->
+
+<form id="studentForm" >
+
     <label for="ID">Student ID :</label>
-    <input id="ID" type="text" placeholder="Enter your ID" required>
+    <input id="ID" name="ID" type="text" placeholder="Enter your ID" required>
     <span class="error" id="idError"></span>
+
     <label for="LName">Last Name :</label>
-    <input id="LName" type="text" placeholder="Enter your Last Name" required>
+    <input id="LName" name="LName" type="text" placeholder="Enter your Last Name" required>
     <span class="error" id="LNameError"></span>
-     <label for="FName">First Name :</label>
-    <input id="FName" type="text" placeholder="Enter your First Name" required>
+
+    <label for="FName">First Name :</label>
+    <input id="FName" name="FName" type="text" placeholder="Enter your First Name" required>
     <span class="error" id="FNameError"></span>
-     <label for="Email">Email :</label>
-    <input id="Email" type="email" placeholder="Enter your Email" required
-    >
+
+    <label for="Email">Email :</label>
+    <input id="Email" name="Email" type="email" placeholder="Enter your Email" required>
     <span class="error" id="emailError"></span>
-    <button type="submit" class="submit">submit</button>
-  </form>
-  <script src="script.js"></script>
+
+    <button type="submit" class="submit">Submit</button>
+
+</form>
+
+<!-- This is where the message appears -->
+<div id="responseMessage"></div>
+
+<script src="js/addstudent.js"></script>
 </body>
 </html>

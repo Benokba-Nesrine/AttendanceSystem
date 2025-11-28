@@ -1,13 +1,16 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// test_connection.php
 
-require_once "db_connect.php";
+require_once 'db_connect.php';
 
-$conn = getConnection();
+echo "<h2>Database Connection Test</h2>";
 
-if ($conn) {
-    echo "Connection successful";
-} else {
-    echo "Connection failed";
+try {
+    $pdo = getDatabaseConnection();
+    echo "<span style='color: green; font-weight: bold;'>✓ Connection successful!</span><br>";
+    echo "Connected to database: <strong>" . $pdo->query('SELECT DATABASE()')->fetchColumn() . "</strong>";
+    
+} catch (Exception $e) {
+    echo "<span style='color: red; font-weight: bold;'>✗ Connection failed!</span><br>";
+    echo "Error: " . htmlspecialchars($e->getMessage());
 }

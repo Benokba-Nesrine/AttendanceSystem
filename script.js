@@ -1,6 +1,4 @@
-// =====================
-// Core Table & Calculations
-// =====================
+
 const table = document.getElementById("attendanceTable");
 const tbody = table.tBodies[0];
 
@@ -74,17 +72,31 @@ function attachRowEvents() {
   Array.from(tbody.rows).forEach(row => {
     row.onmouseenter = () => row.classList.add("row-hover");
     row.onmouseleave = () => row.classList.remove("row-hover");
-    row.onclick = () => {
-      const last = row.cells[1].textContent;
-      const first = row.cells[2].textContent;
-      const absences = row.querySelector(".abs").textContent;
-      alert(`Student: ${first} ${last}\nAbsences: ${absences}`);
-    };
+
+    // Use event delegation: click only triggers on specific cells
+    Array.from(row.cells).forEach((cell, index) => {
+      cell.onclick = () => {
+        // Columns 0–2 and 15–17 (0-based index)
+        if ((index >= 0 && index <= 2) || (index >= 15 && index <= 17)) {
+          const last = row.cells[1].textContent;
+          const first = row.cells[2].textContent;
+          const absences = row.querySelector(".abs").textContent;
+          const participation = row.querySelector(".parNbr").textContent;
+          const message = row.querySelector(".msg").textContent;
+
+          alert(
+            `Student: ${first} ${last}\n` +
+            `Absences: ${absences}\n`
+          );
+        }
+      };
+    });
   });
 }
 
+
 // =====================
-// Checkbox Event Listeners (AJAX Update)
+// Checkbox Event Listeners 
 // =====================
 function attachCheckboxListeners() {
   Array.from(tbody.rows).forEach(row => {
@@ -138,3 +150,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Optional: continuously update table calculations every 1 second
   setInterval(updateTable, 1000);
 });
+function deleteStudent(studentId, row) {
+    if(!confirm("Are you sure you want to delete this student?")) return;
+
+    fetch(`delete_student.php?id=${studentId}`, { method: 'GET' })
+        .then(() => row.remove())
+        .catch(err => console.error("Failed to delete:", err));
+}

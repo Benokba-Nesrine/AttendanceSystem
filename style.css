@@ -247,3 +247,11 @@ button:hover {
   0% { box-shadow: 0 0 8px 2px #00ff00; }
   100% { box-shadow: 0 0 20px 6px #00ff00; }
 }
+ .report { padding: 40px; text-align: center; font-family: Arial; }
+    .cards { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin: 30px 0; }
+    .card-reports { background: white; padding: 20px; border-radius: 15px; width: 180px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .card-reports h2 { margin: 10px 0; font-size: 2.5em; }
+    canvas { max-width: 500px; margin: 40px auto; }
+    .green { color: #28a745; }
+    .yellow { color: #ffc107; }
+    .red { color: #dc3545; }

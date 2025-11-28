@@ -1,42 +1,37 @@
 <?php
-// Database connection
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "attendance_db";
+require_once "db_connect.php";
+$conn = getDatabaseConnection();
 
-$conn = new mysqli($host, $user, $pass, $db);
+$stmt = $conn->query("SELECT * FROM students");
+$students = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if ($conn->connect_error) {
-    die("Database connection failed: " . $conn->connect_error);
-}
-
-// Fetch all students
-$sql = "SELECT * FROM students ORDER BY id ASC";
-$result = $conn->query($sql);
-
-// Generate table rows
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-
-        echo "<tr>";
-
-        echo "<td>{$row['student_id']}</td>";
-        echo "<td>{$row['last_name']}</td>";
-        echo "<td>{$row['first_name']}</td>";
-
-        // repeat for sessions s1 to s6
-        for ($i = 1; $i <= 6; $i++) {
-            echo '<td class="presence"><input type="checkbox" '.($row["s{$i}_p"]==1 ? "checked" : "").'></td>';
-            echo '<td class="participation"><input type="checkbox" '.($row["s{$i}_pa"]==1 ? "checked" : "").'></td>';
-        }
-
-        echo '<td class="abs"></td>';
-        echo '<td class="parNbr"></td>';
-        echo '<td class="msg"></td>';
-
-        echo "</tr>";
-    }
-}
-$conn->close();
+foreach ($students as $s):
 ?>
+<tr>
+    <td><?= htmlspecialchars($s['student_id']) ?></td>
+    <td><?= htmlspecialchars($s['last_name']) ?></td>
+    <td><?= htmlspecialchars($s['first_name']) ?></td>
+    
+    <?php
+    // Loop for 6 sessions, each with presence and participation
+    for ($i = 1; $i <= 6; $i++):
+        $pChecked = $s["s{$i}_p"] ? 'checked' : '';
+        $paChecked = $s["s{$i}_pa"] ? 'checked' : '';
+    ?>
+        <td class="presence"><input type="checkbox" <?= $pChecked ?>></td>
+        <td class="participation"><input type="checkbox" <?= $paChecked ?>></td>
+    <?php endfor; ?>
+
+    <td class="abs"></td>
+    <td class="parNbr"></td>
+    <td class="msg"></td>
+
+    <!-- DELETE COLUMN -->
+    <td style="text-align:center;">
+    <img src="images/delete.png" alt="Delete Student"
+         style="height:28px; width:28px; cursor:pointer;"
+         onclick="deleteStudent(<?= $s['student_id'] ?>, this.closest('tr'))"/>
+    </td>
+
+</tr>
+<?php endforeach; ?>

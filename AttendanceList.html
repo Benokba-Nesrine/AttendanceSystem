@@ -5,6 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Attendance List</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+/* Container for search input and buttons */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+/* Label styling */
+.controls label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+/* Search input styling */
+#searchName {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1; /* allows input to expand */
+}
+
+/* Sort buttons styling */
+#sortAbs, #sortPar ,#highlightExcellentBtn, #resetColorsBtn{
+  padding: 8px 16px;
+  font-size: 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #2980b9;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+#sortAbs:hover, #sortPar:hover {
+  background-color: #0056b3;
+}
+
+/* Sort message styling (optional) */
+#sortMessage {
+  margin-top: 10px;
+  font-style: italic;
+  color: #555;
+}
+</style>
+
 </head>
 <body>
   <nav class="nav-bar">
@@ -29,6 +78,15 @@
   <p>Logout</p>
 </a>
   </nav>
+  <div class="controls">
+    <label for="searchName">Search by Name:</label>
+    <input type="text" id="searchName" placeholder="Enter First or Last Name">
+    
+    <button id="sortAbs">Sort by Absences (Ascending)</button>
+    <button id="sortPar">Sort by Participation (Descending)</button>
+</div>
+
+
   <table id="attendanceTable">
     <thead>
       <tr >
@@ -65,8 +123,8 @@
        
     </tbody>
 
-    </tbody>
   </table>
+  <div id="sortMessage"></div>
   <button id="highlightExcellentBtn">Highlight Excellent Students</button>
   <button id="resetColorsBtn">Reset Colors</button>
 
@@ -74,5 +132,6 @@
   <script  src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>
+  
 </body>
 </html>

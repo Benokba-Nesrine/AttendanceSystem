@@ -200,7 +200,7 @@ form input:focus {
   font-weight: 100;
   display: block;
 }
-button{
+.submit{
   display: block;
   margin-top: 20px;
   width: 100%;
@@ -214,7 +214,7 @@ button{
   cursor: pointer;
   transition: 0.3s
 }
-button:hover {
+.submit:hover {
   background-color: #1f5f91;
 }
 

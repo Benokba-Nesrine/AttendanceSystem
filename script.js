@@ -157,3 +157,57 @@ function deleteStudent(studentId, row) {
         .then(() => row.remove())
         .catch(err => console.error("Failed to delete:", err));
 }
+$(document).ready(function() {
+
+    // ------------------------------
+    // 1. Search by Name
+    // ------------------------------
+    $("#searchName").on("keyup", function() {
+        const searchText = $(this).val().toLowerCase();
+
+        $("#studentsBody tr").filter(function() {
+            const lastName = $(this).find("td:nth-child(2)").text().toLowerCase();
+            const firstName = $(this).find("td:nth-child(3)").text().toLowerCase();
+            $(this).toggle(lastName.includes(searchText) || firstName.includes(searchText));
+        });
+    });
+
+    // ------------------------------
+    // 2. Sort by Absences (Ascending)
+    // ------------------------------
+    $("#sortAbs").click(function() {
+        const rows = $("#studentsBody tr").get();
+
+        rows.sort((a, b) => {
+            const aVal = parseInt($(a).find(".abs").text()) || 0;
+            const bVal = parseInt($(b).find(".abs").text()) || 0;
+            return aVal - bVal;
+        });
+
+        $.each(rows, function(i, row) {
+            $("#studentsBody").append(row);
+        });
+
+        $("#sortMessage").text("Currently sorted by absences (ascending)");
+    });
+
+    // ------------------------------
+    // 3. Sort by Participation (Descending)
+    // ------------------------------
+    $("#sortPar").click(function() {
+        const rows = $("#studentsBody tr").get();
+
+        rows.sort((a, b) => {
+            const aVal = parseInt($(a).find(".parNbr").text()) || 0;
+            const bVal = parseInt($(b).find(".parNbr").text()) || 0;
+            return bVal - aVal;
+        });
+
+        $.each(rows, function(i, row) {
+            $("#studentsBody").append(row);
+        });
+
+        $("#sortMessage").text("Currently sorted by participation (descending)");
+    });
+
+});
